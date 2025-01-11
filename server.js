@@ -84,6 +84,15 @@ app.get("/about", (req, res) => {
 });
 
 app.post("/data", (req, res) => {
+    // notog'ri praol bolsa invalid parol deb chiqarsin
+    // bu login va html fayllari bilan ishlasin
+
+    const { username, password } = req.body;
+    if (username === "admin" && password === "password") {
+        res.send("Login successful!");
+    } else {
+        res.status(401).send("Invalid credentials!");
+    }
   const data = req.body;
   res.send(`You sent: ${JSON.stringify(data)}`);
 });
